@@ -34,6 +34,9 @@ export class AppController {
   @Get()
   getUsers() {
     return this.userRepository.find({
+      order: {
+        id: 'ASC',
+      },
       // 필터링할 조건을 입력하게 된다.
       where: {
         // 아닌경우 가져오기
@@ -194,5 +197,74 @@ export class AppController {
       @Param('id') id: string
   ) {
     await this.profileRepository.delete(+id);
+  }
+
+  @Post('sample')
+  async sample() {
+    // 모델에 해당되는 객체 생성 - 저장은 안함
+    // const user1 = this.userRepository.create({
+    //   email: 'test@google.com',
+    // });
+
+    // 저장
+    // const user2 = await this.userRepository.save({
+    //   email: 'testSave@gmail.com',
+    // })
+
+    // preload
+    // 입력된 값을 기반으로 데이터베이스에 있는 데이터를 불러오고
+    // 추가 입력된 값으로 데이터베이스에서 가져온 값들을 대체함.
+    // 저장하지는 않음
+    // const user3 = await this.userRepository.preload({
+    //   id: 101,
+    //   email: 'testPreload@gmail.com',
+    // })
+
+    // 삭제하기
+    // await this.userRepository.delete(101);
+
+    // 값 증가
+    // await this.userRepository.increment({
+    //   id: 1,
+    // }, 'count', 2);
+
+    // 값 감소
+    // await this.userRepository.decrement({
+    //   id: 1,
+    // }, 'count', 1);
+
+    // 갯수 카운트하기
+    // const count = await this.userRepository.count({
+    //   where: {
+    //     email: ILike('%0%'),
+    //   }
+    // })
+
+    // 전부 더하기
+    // const sum = await this.userRepository.sum('count', {
+    //   id: LessThan(4),
+    // })
+
+    // 평균
+    // const average = await this.userRepository.average('count', {
+    //   id: LessThan(4),
+    // });
+
+    // 최솟값
+    // const min = await this.userRepository.minimum('count', {
+    //   id: LessThan(4),
+    // })
+
+    //최댓값
+    // const max = await this.userRepository.maximum('count', {
+    //   id: LessThan(4),
+    // })
+
+    // pagination 할 때 유용한
+    // const usersAndCount = await this.userRepository.findAndCount({
+    //   take: 20,
+    // })
+
+    return usersAndCount;
   }
 }
